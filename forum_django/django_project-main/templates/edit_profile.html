@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+</head>
+<body>
+<div class="profile-edit-container">
+    <h1>Edit Profile</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <h3>User Information</h3>
+        <div class="form-group">
+            {{ user_form.as_p }}
+        </div>
+
+        <h3>Profile Information</h3>
+        <div class="form-group">
+            {{ profile_form.as_p }}
+        </div>
+
+        <button type="submit" class="btn-save">Save Changes</button>
+    </form>
+
+    <a href="{% url 'my_profile' %}" class="back-to-profile">Back to Profile</a>
+</div>
+</body>
+</html>
